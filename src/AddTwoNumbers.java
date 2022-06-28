@@ -62,5 +62,31 @@ Evaluate:
  */
 
 public class AddTwoNumbers {
+    public static ListNode.Node addTwoNumbers(ListNode.Node h1, ListNode.Node h2){
+        ListNode.Node dummyNode = new ListNode.Node(0);
+        ListNode.Node p = h1;
+        ListNode.Node q = h2;
+        ListNode.Node currentNode = dummyNode;
+        int carry = 0;
+
+        while(p != null || q != null){
+            int x = (p != null) ? p.data : 0;
+            int y = (q != null) ? q.data : 0;
+            int sum = carry + x + y;
+            carry = sum / 10;
+            currentNode.next = new ListNode.Node(sum % 10);
+            currentNode = currentNode.next;
+            if (p != null) {
+                p = p.next;
+            }
+            if (q != null){
+                q = q.next;
+            }
+        }
+        if(carry > 0){
+            currentNode.next = new ListNode.Node(carry);
+        }
+        return dummyNode.next;
+    }
 
 }
