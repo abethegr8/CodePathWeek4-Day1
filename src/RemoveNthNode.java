@@ -59,6 +59,10 @@ Evaluate: Time:O(N), Space:O(1);
  */
 
 public class RemoveNthNode {
+
+    //Input: 1->2->3->4->5->null, n = 2
+    //                s     f
+    //Output: 1->2->3->5
     public static ListNode.Node removeNthNode(ListNode.Node head, int n){
         ListNode.Node dummy = new ListNode.Node(0);
         dummy.next = head;
