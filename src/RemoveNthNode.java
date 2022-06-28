@@ -64,23 +64,23 @@ public class RemoveNthNode {
     //                s     f
     //Output: 1->2->3->5
     public static ListNode.Node removeNthNode(ListNode.Node head, int n){
-        ListNode.Node dummy = new ListNode.Node(0);
-        dummy.next = head;
-        ListNode.Node first = dummy;
-        ListNode.Node second = dummy;
+        ListNode.Node dummy = new ListNode.Node(0);                     //create dummy node, this adds to the LL,
+        dummy.next = head;                                                 //points to head which we'll return
+        ListNode.Node first = dummy;                                       //we need a pointer that will be N nodes ahead of second pointer
+        ListNode.Node second = dummy;                       //stays at head. Goal is to have this pointer point to the Node right before the one we need to delete
 
         //advance first n times ahead of second
-        for(int i=1; i <= n+1; i++){
-            first = first.next;
+        for(int i=1; i <= n+1; i++){            //we added a 1 at the end because we added the dummy node which is now 0,1,2,3,4,5
+            first = first.next;                 //we want first to be n time ahead of second
         }
 
         //move first to the end maintaining gap
-        while(first != null){
+        while(first != null){                   //if this goes well, we keep moving the first and second pointers until first is null
             first = first.next;
-            second = second.next;
+            second = second.next;               //second will be the node right before the node we want to delete
         }
-        second.next = second.next.next;
-        return dummy.next;
+        second.next = second.next.next;     //now run the linkedlist delete function
+        return dummy.next;                  //return head or the dummy node pointing next which is head
     }
 
 }
